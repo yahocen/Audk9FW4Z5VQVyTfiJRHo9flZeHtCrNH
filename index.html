@@ -1,9 +1,91 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh-CN">
-  <head>
-    <title>测试页面</title>
-  </head>
-  <body dir="ltr" class="neterror">
-    你好，世界！
-  </body>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>测试页面</title>
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		html,body{
+			background-color: #C7EDCC;
+		}
+		header .navbar .search button{
+			background-color: #CCE8CF !important;
+			border-radius: .25rem !important;
+			color: rgba(0,0,0,.55);
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<header>
+			<!-- 小屏幕上水平导航栏会切换为垂直的 -->
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<!-- Logo -->
+				<div class="container">
+					<a class="navbar-brand" href="#">
+						<img src="http://home.yhc.red:6868/blog/avatar" class="rounded" alt="Yahocen" style="width:40px;">
+						{{config.displayName}}
+					</a>
+					<!-- 菜单按钮 -->
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+						<i class="fa fa-bars" aria-hidden="true"></i>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarScroll">
+						<ul class="navbar-nav">
+							<li v-for="menu in menus" class="nav-item" :class="{ 'dropdown': menu.subMenu.length!=0 }">
+								<a class="nav-link" :class="{ 'dropdown-toggle': menu.subMenu.length!=0 }" href="#" :data-bs-toggle="menu.subMenu.length!=0 ?'dropdown' :''">{{menu.name}}</a>
+								<div v-if="menu.subMenu.length!=0" class="dropdown-menu">
+									<a v-for="subMenu in menu.subMenu" class="dropdown-item" href="#">{{subMenu.name}}</a>
+								</div>
+							</li>
+						</ul>
+						<!-- 搜索按钮 -->
+						<form class="d-flex search" role="search">
+							<input class="form-control me-2" type="search" placeholder="搜索内容" aria-label="Search">
+							<button class="btn" type="submit">
+								<i class="fa fa-search" aria-hidden="true"></i>
+							</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<article class="container">
+			123
+		</article>
+		<footer>
+			<article class="container">321</article>
+		</footer>
+	</div>
+
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.staticfile.org/vue/3.2.36/vue.global.min.js"></script>
+	<script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		const Counter = {
+			data() {
+				return {
+					config: {},
+					menus: [],
+				}
+			},
+			created(){
+				let that = this
+				$.get('http://home.yhc.red:6868/blog/menu', (result, status) => {
+					if(status === 'success'){
+						that.menus = result.data
+					}
+				});
+				$.get('http://home.yhc.red:6868/blog/config', (result, status) => {
+					if(status === 'success'){
+						that.config = result.data
+					}
+				});
+			}
+		}
+		let app = Vue.createApp(Counter).mount('#app')
+	</script>
+</body>
 </html>
