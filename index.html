@@ -67,18 +67,19 @@
 		const Counter = {
 			data() {
 				return {
+					api: 'https://home.yhc.red:6843',
 					config: {},
 					menus: [],
 				}
 			},
 			created(){
 				let that = this
-				$.get('http://home.yhc.red:6868/blog/menu', (result, status) => {
+				$.get(`${that.api}/blog/menu`, (result, status) => {
 					if(status === 'success'){
 						that.menus = result.data
 					}
 				});
-				$.get('http://home.yhc.red:6868/blog/config', (result, status) => {
+				$.get(`${that.api}/blog/config`, (result, status) => {
 					if(status === 'success'){
 						that.config = result.data
 					}
