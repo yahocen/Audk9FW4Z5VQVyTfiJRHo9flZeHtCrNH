@@ -3,96 +3,12 @@
 <head>
 	<meta charset="utf-8"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>测试页面</title>
-	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/style.css"/>
-	<link rel="stylesheet" href="css/index.css"/>
+	<title>百毒网盘</title>
 </head>
 <body>
-	<div id="app">
-		<header>
-			<!-- 小屏幕上水平导航栏会切换为垂直的 -->
-			<nav class="navbar navbar-expand-lg navbar-light bg-light">
-				<!-- Logo -->
-				<div class="container">
-					<a class="navbar-brand" href="#">
-						<img src="http://home.yhc.red:6868/blog/avatar" class="rounded" alt="Yahocen" style="width:40px;">
-						{{config.displayName}}
-					</a>
-					<!-- 菜单按钮 -->
-					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-						<i class="fa fa-bars" aria-hidden="true"></i>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarScroll">
-						<ul class="navbar-nav">
-							<li v-for="menu in menus" class="nav-item" :class="{ 'dropdown': menu.subMenu.length!=0 }">
-								<a class="nav-link" :class="{ 'dropdown-toggle': menu.subMenu.length!=0 }" href="#" :data-bs-toggle="menu.subMenu.length!=0 ?'dropdown' :''">{{menu.name}}</a>
-								<div v-if="menu.subMenu.length!=0" class="dropdown-menu">
-									<a v-for="subMenu in menu.subMenu" class="dropdown-item" href="#">{{subMenu.name}}</a>
-								</div>
-							</li>
-						</ul>
-						<!-- 搜索按钮 -->
-						<form class="d-flex search" role="search">
-							<input class="form-control me-2" type="search" placeholder="搜索内容" aria-label="Search">
-							<button class="btn" type="submit">
-								<i class="fa fa-search" aria-hidden="true"></i>
-							</button>
-						</form>
-					</div>
-				</div>
-			</nav>
-		</header>
-		<main class="container">
-			<div class="note" v-for="(note,index) in notes" :key="note.docGuid">
-				<div v-if="note.coverImage" class="card">
-				  <div class="row g-0">
-				    <div class="col-md-2">
-				      <img src="..." class="img-fluid rounded-start" :alt="note.title">
-				    </div>
-				    <div class="col-md-10">
-				      <div class="card-body">
-				        <h5 class="card-title">{{note.title}}</h5>
-				        <p class="card-text text-muted">{{note.abstractText}}</p>
-				        <p class="card-text"><small class="text-muted">{{note.dataModified}}</small></p>
-				      </div>
-				    </div>
-				  </div>
-				</div>
-				<div v-else class="card">
-				  <div class="card-body">
-				    <h5 class="card-title">
-						<a href="#">{{note.title}}</a>
-					</h5>
-				    <p class="card-text text-muted">{{note.abstractText}}</p>
-					<p class="card-text"><small class="text-muted">{{note.dataModified}}</small></p>
-				  </div>
-				</div>
-			</div>
-			
-			<!-- 分页 -->
-			<nav aria-label="Page navigation example">
-			  <ul class="pagination justify-content-center">
-			    <li class="page-item disabled">
-			      <a class="page-link">上一页</a>
-			    </li>
-			    <li class="page-item">
-			      <a class="page-link" href="#">下一页</a>
-			    </li>
-			  </ul>
-			</nav>
-		</main>
-		<footer class="container-fluid bg-light">
-			<div class="copyright text-center text-muted">
-				<a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn/">鲁ICP备18044181号-2</a>
-			</div>
-		</footer>
-	</div>
-
-	<script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
-	<script src="https://cdn.staticfile.org/vue/3.2.36/vue.global.min.js"></script>
-	<script src="https://cdn.staticfile.org/axios/0.27.2/axios.min.js"></script>
-	<script src="js/index.js"></script>
+	加载中...
+	<script>
+		location.href='https://home.yhc.red:5443/'
+	</script>
 </body>
 </html>
